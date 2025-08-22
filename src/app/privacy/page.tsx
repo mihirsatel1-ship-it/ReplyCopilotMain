@@ -32,7 +32,7 @@ export default function Privacy() {
             <ul>
               <li><strong>Customer Reviews:</strong> The review text you paste for processing</li>
               <li><strong>Generation Parameters:</strong> Your selected tone, brand voice, length preferences, and star ratings</li>
-              <li><strong>Usage Analytics:</strong> Anonymous, aggregated usage statistics (page views, generation counts, error rates)</li>
+
             </ul>
 
             <h3>What We DON'T Store</h3>
@@ -51,14 +51,14 @@ export default function Privacy() {
               <li>Your review is sent to Google's Gemini AI service for processing</li>
               <li>We generate response options based on your parameters</li>
               <li>The review text is immediately discarded from our systems</li>
-              <li>Only anonymous usage statistics are retained</li>
+
             </ol>
 
             <h2>Data Retention</h2>
             <p>
               <strong>Customer Reviews:</strong> Not stored - processed transiently and immediately discarded<br/>
               <strong>Generated Responses:</strong> Not stored - only displayed to you in real-time<br/>
-              <strong>Usage Analytics:</strong> Retained for up to 12 months in aggregated, anonymous form
+
             </p>
 
             <h2>Third-Party Services</h2>

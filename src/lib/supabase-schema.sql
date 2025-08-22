@@ -4,35 +4,6 @@
 -- Enable necessary extensions
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Analytics table for aggregated data
-CREATE TABLE analytics (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  total_generations INTEGER DEFAULT 0,
-  success_rate DECIMAL(5,4) DEFAULT 1.0,
-  average_response_time DECIMAL(8,2) DEFAULT 0,
-  sentiment_positive INTEGER DEFAULT 0,
-  sentiment_neutral INTEGER DEFAULT 0,
-  sentiment_negative INTEGER DEFAULT 0,
-  platform_breakdown JSONB DEFAULT '{}',
-  tone_preferences JSONB DEFAULT '{}',
-  time_series_data JSONB DEFAULT '[]',
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- Individual generation events for detailed tracking
-CREATE TABLE generation_events (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  success BOOLEAN NOT NULL,
-  response_time INTEGER NOT NULL, -- in milliseconds
-  tone VARCHAR(20) NOT NULL,
-  platform VARCHAR(20) DEFAULT 'other',
-  sentiment_label VARCHAR(10), -- positive, neutral, negative
-  sentiment_score DECIMAL(4,3), -- -1.0 to 1.0
-  ip_hash VARCHAR(64), -- hashed IP for privacy
-  user_agent_hash VARCHAR(64), -- hashed user agent
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
 
 -- Templates table for saved response templates
 CREATE TABLE templates (
@@ -77,33 +48,19 @@ CREATE TABLE users (
 );
 
 -- Indexes for performance
-CREATE INDEX idx_generation_events_created_at ON generation_events(created_at);
-CREATE INDEX idx_generation_events_platform ON generation_events(platform);
-CREATE INDEX idx_generation_events_tone ON generation_events(tone);
-CREATE INDEX idx_generation_events_sentiment ON generation_events(sentiment_label);
 CREATE INDEX idx_rate_limits_ip_type ON rate_limits(ip_hash, limit_type);
 CREATE INDEX idx_rate_limits_reset_time ON rate_limits(reset_time);
 CREATE INDEX idx_templates_platform ON templates(platform);
 CREATE INDEX idx_templates_business_type ON templates(business_type);
 
 -- Row Level Security (RLS) policies
-ALTER TABLE analytics ENABLE ROW LEVEL SECURITY;
-ALTER TABLE generation_events ENABLE ROW LEVEL SECURITY;
 ALTER TABLE templates ENABLE ROW LEVEL SECURITY;
 ALTER TABLE rate_limits ENABLE ROW LEVEL SECURITY;
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 
--- Public read access for analytics (aggregated data only)
-CREATE POLICY "Analytics are publicly readable" ON analytics
-  FOR SELECT USING (true);
-
 -- Public read access for public templates
 CREATE POLICY "Public templates are readable" ON templates
   FOR SELECT USING (is_public = true);
-
--- Generation events are only accessible by service role
-CREATE POLICY "Generation events service access" ON generation_events
-  FOR ALL USING (auth.role() = 'service_role');
 
 -- Rate limits are only accessible by service role
 CREATE POLICY "Rate limits service access" ON rate_limits
@@ -124,5 +81,4 @@ INSERT INTO templates (id, name, description, tone, brand_voice, length, platfor
   (uuid_generate_v4(), 'Retail - General Feedback', 'For general retail feedback', 'friendly', 'Customer-focused and helpful', 'short', 'other', 'Retail', true),
   (uuid_generate_v4(), 'Service - Professional', 'For professional service businesses', 'professional', 'Expert, reliable, and results-oriented', 'medium', 'google', 'Professional Service', true);
 
--- Initialize analytics record
-INSERT INTO analytics (id) VALUES (uuid_generate_v4()) ON CONFLICT DO NOTHING;
+

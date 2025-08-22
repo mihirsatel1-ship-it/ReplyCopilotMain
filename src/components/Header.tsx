@@ -43,16 +43,7 @@ export default function Header() {
             >
               Generator
             </Link>
-            <Link
-              href="/analytics"
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                pathname === '/analytics' 
-                  ? 'bg-emerald-50 text-emerald-600' 
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-              }`}
-            >
-              Analytics
-            </Link>
+
             <Link
               href="/privacy"
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${

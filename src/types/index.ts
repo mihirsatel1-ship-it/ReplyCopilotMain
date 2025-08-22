@@ -55,23 +55,7 @@ export interface Template {
   usageCount: number
 }
 
-export interface Analytics {
-  totalGenerations: number
-  successRate: number
-  averageResponseTime: number
-  sentimentDistribution: {
-    positive: number
-    neutral: number
-    negative: number
-  }
-  platformBreakdown: Record<string, number>
-  tonePreferences: Record<string, number>
-  timeSeriesData: {
-    date: string
-    generations: number
-    avgSentiment: number
-  }[]
-}
+
 
 export interface User {
   id: string

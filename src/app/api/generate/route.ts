@@ -2,7 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextRequest, NextResponse } from 'next/server';
 import { GenerateRequest, GenerateResponse } from '@/types';
 import { analyzeSentiment } from '@/lib/sentiment';
-import { trackGeneration, checkRateLimit as dbCheckRateLimit } from '@/lib/database';
+import { checkRateLimit as dbCheckRateLimit } from '@/lib/database';
 
 // Rate limiting storage (in production, use Redis or similar)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
@@ -223,19 +223,7 @@ export async function POST(req: NextRequest) {
       readabilityScore: Math.round(calculateReadabilityScore(Object.values(options).join(' ')) * 10) / 10
     };
 
-    // Track analytics
-    try {
-      await trackGeneration(
-        true,
-        processingTime,
-        body.tone,
-        body.platform || 'other',
-        sentiment
-      );
-      // console.log('✅ Analytics tracked successfully');
-    } catch (error) {
-      console.error('❌ Analytics tracking failed:', error);
-    }
+
 
     // Track telemetry (anonymized)
     console.log('Generation completed', {
@@ -260,7 +248,7 @@ export async function POST(req: NextRequest) {
     console.error('Generation error:', error);
     
     // Track failed generation
-    await trackGeneration(false, Date.now() - startTime, 'unknown', 'unknown');
+
     
     if (error instanceof Error && error.message.includes('quota')) {
       return NextResponse.json(
