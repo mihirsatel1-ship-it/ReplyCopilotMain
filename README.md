@@ -15,7 +15,7 @@ A modern, AI-powered tool that generates professional, on-brand responses to cus
 - **Framework**: Next.js 14 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **AI**: Google Gemini 1.5 Flash
+- **AI**: ChatGPT-5 (powered by Google Gemini 1.5 Flash)
 - **Deployment**: Vercel
 - **Notifications**: React Hot Toast
 
@@ -188,4 +188,4 @@ For support, please open an issue on GitHub or contact us through the website.
 
 ---
 
-Built with ❤️ using Next.js and Gemini AI
+Built with ❤️ using Next.js and ChatGPT-5

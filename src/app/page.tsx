@@ -2,28 +2,28 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-br from-slate-50 to-emerald-50 min-h-screen">
+    <div className="bg-gradient-to-br from-purple-300 via-green-300 to-teal-400 min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-3xl mb-8">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-3xl mb-8 animate-float">
               <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6 8L12 4L18 8L15 12L12 16L9 12L6 8Z" opacity="0.8"/>
-                <path d="M8 10L14 6L20 10L17 14L14 18L11 14L8 10Z"/>
+                <path d="M12 4L20 12L12 20L4 12L12 4Z" opacity="0.9"/>
+                <path d="M12 6L18 12L12 18L6 12L12 6Z" opacity="0.7"/>
               </svg>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight animate-fade-in-up">
               AI-Powered
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-emerald-600">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600">
                 Review Replies
               </span>
               Made Simple
             </h1>
-            <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-700 mb-10 max-w-3xl mx-auto leading-relaxed animate-fade-in-up stagger-1">
               Transform customer reviews into thoughtful, on-brand responses that strengthen your business relationships and online reputation.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in-up stagger-2">
               <Link 
                 href="/generator"
                 className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -42,7 +42,7 @@ export default function Home() {
             </div>
             
             {/* Trust Strip */}
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl mx-auto animate-fade-in-up stagger-3">
               <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
                 <div className="flex items-center justify-center space-x-2 text-sm text-emerald-700">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -57,10 +57,13 @@ export default function Home() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white/5 backdrop-blur-sm relative">
+        {/* Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
               Why Choose ReplyPilot?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -68,38 +71,38 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-8 border border-emerald-100">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 border border-white/30 shadow-xl hover-lift animate-fade-in-up stagger-1">
               <div className="w-14 h-14 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Lightning Fast</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Lightning Fast</h3>
               <p className="text-gray-600 leading-relaxed">
                 Generate 3 professional response options in under 10 seconds. No waiting, no delays.
               </p>
             </div>
             
-            <div className="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-8 border border-teal-100">
-              <div className="w-14 h-14 bg-gradient-to-r from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
+                          <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 border border-white/30 shadow-xl hover-lift animate-fade-in-up stagger-2">
+                <div className="w-14 h-14 bg-gradient-to-r from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Brand Consistent</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Brand Consistent</h3>
               <p className="text-gray-600 leading-relaxed">
                 Customize tone and brand voice to ensure every response aligns with your business identity.
               </p>
             </div>
             
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border border-green-100">
-              <div className="w-14 h-14 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
+                          <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 border border-white/30 shadow-xl hover-lift animate-fade-in-up stagger-3">
+                <div className="w-14 h-14 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Privacy First</h3>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Privacy First</h3>
               <p className="text-gray-600 leading-relaxed">
                 Your reviews are never stored. All processing is transient and completely anonymous.
               </p>
@@ -109,13 +112,16 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white/15 backdrop-blur-sm relative">
+        {/* Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4 animate-fade-in-up">
               Everything You Need
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in-up stagger-1">
               Powerful features designed for modern businesses.
             </p>
           </div>
@@ -128,7 +134,7 @@ export default function Home() {
               'One-click copy to clipboard',
               'Rate limiting to prevent abuse'
             ].map((feature, index) => (
-              <div key={index} className="flex items-start space-x-3">
+              <div key={index} className="flex items-start space-x-3 animate-fade-in-up" style={{animationDelay: `${(index + 1) * 0.1}s`}}>
                 <div className="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg className="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -142,20 +148,23 @@ export default function Home() {
       </section>
 
       {/* Example Preview */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white/10 backdrop-blur-sm relative">
+        {/* Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4 animate-fade-in-up">
               See It In Action
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in-up stagger-1">
               Here's how ReplyPilot transforms customer feedback into professional responses.
             </p>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-4xl mx-auto">
+          <div className="bg-white/20 backdrop-blur-md rounded-2xl shadow-xl p-8 max-w-4xl mx-auto border border-white/30 animate-fade-in-up stagger-2">
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Customer Review:</h3>
+                              <h3 className="text-lg font-semibold text-gray-800 mb-2">Customer Review:</h3>
               <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-yellow-400">
                 <p className="text-gray-700 italic">
                   "Great service but the delivery was a bit slow. Food was delicious though!"
@@ -174,7 +183,7 @@ export default function Home() {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Generated Responses:</h3>
+                              <h3 className="text-lg font-semibold text-gray-800 mb-4">Generated Responses:</h3>
               <div className="space-y-4">
                 {[
                   {
@@ -193,7 +202,7 @@ export default function Home() {
                     tone: 'Casual & Appreciative'
                   }
                 ].map((option) => (
-                  <div key={option.label} className="border border-gray-200 rounded-lg p-4">
+                  <div key={option.label} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 hover-lift animate-fade-in-up" style={{animationDelay: `${(option.label === 'A' ? 0.3 : option.label === 'B' ? 0.4 : 0.5)}s`}}>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="flex items-center mb-2">
@@ -219,17 +228,19 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-500 to-emerald-600">
+      <section className="py-20 bg-white/10 backdrop-blur-sm relative">
+        {/* Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4 animate-fade-in-up">
             Ready to Transform Your Review Responses?
           </h2>
-          <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto animate-fade-in-up stagger-1">
             Join businesses that trust ReplyPilot to maintain their online reputation with professional, thoughtful responses.
           </p>
           <Link 
             href="/generator"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-emerald-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors shadow-lg"
+            className="inline-flex items-center justify-center px-8 py-4 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors shadow-lg animate-fade-in-up stagger-2 hover-lift"
           >
             Start Generating Now
             <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

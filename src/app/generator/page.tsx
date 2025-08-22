@@ -50,16 +50,6 @@ export default function Generator() {
       }
 
       setResults(data)
-      
-      // Track copy event
-      console.log('Generation completed', {
-        path: '/generator',
-        tone: formData.tone,
-        starsBucket: formData.stars ? (formData.stars <= 2 ? 'low' : formData.stars >= 4 ? 'high' : 'medium') : 'unknown',
-        length: formData.length,
-        platform: formData.platform,
-        provider: 'gemini-1.5-flash'
-      })
 
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred'
@@ -74,35 +64,16 @@ export default function Generator() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success('Response copied to clipboard!')
-      
-      // Track copy event
-      console.log('Copy event', {
-        path: '/generator',
-        action: 'copy_response'
-      })
     } catch (err) {
       toast.error('Failed to copy to clipboard')
     }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-green-200 via-yellow-200 to-red-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
+        {/* Trust Notice */}
         <div className="mb-8">
-          <div className="flex items-center space-x-4 mb-4">
-            <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
-            </div>
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">AI ReplyPilot</h1>
-              <p className="text-gray-600">Transform customer reviews into professional, on-brand responses</p>
-            </div>
-          </div>
-          
-          {/* Trust Notice */}
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 max-w-4xl mx-auto">
             <div className="flex items-center justify-center space-x-2 text-sm text-blue-700">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -117,7 +88,7 @@ export default function Generator() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Form Section */}
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-200 p-6 sticky top-8">
+            <form onSubmit={handleSubmit} className="bg-emerald-50 rounded-2xl border border-emerald-200 p-6 sticky top-8">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Review Details</h2>
               
               {/* Review Input */}
@@ -276,7 +247,7 @@ export default function Generator() {
               <button
                 type="submit"
                 disabled={isLoading || !formData.review.trim()}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                className="w-full bg-gradient-to-r from-green-800 to-blue-800 text-white font-semibold py-3 px-6 rounded-xl hover:from-green-900 hover:to-blue-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
               >
                 {isLoading ? (
                   <>
@@ -322,10 +293,13 @@ export default function Generator() {
 
             {!isLoading && !error && !results && (
               <div className="space-y-6">
-                <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-2xl p-12 text-center">
-                  <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
+                <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-2xl p-12 text-center animate-fade-in-up">
+                  <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 animate-float">
+                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 4L20 12L12 20L4 12L12 4Z" opacity="0.9"/>
+                      <path d="M12 6L18 12L12 18L6 12L12 6Z" opacity="0.7"/>
+                    </svg>
+                  </div>
                   <h3 className="text-lg font-medium text-gray-900 mb-2">Ready to Generate</h3>
                   <p className="text-gray-600">Enter a review and click generate to see AI-powered response options</p>
                 </div>
@@ -372,7 +346,7 @@ export default function Generator() {
                   </div>
                   <div className="space-y-4">
                     {Object.entries(results.options).map(([key, response]) => (
-                      <div key={key} className="border border-gray-200 rounded-xl p-4 hover:border-blue-300 transition-colors group">
+                      <div key={key} className="border border-gray-200 rounded-xl p-4 hover:border-blue-300 transition-colors group hover-lift animate-fade-in-up" style={{animationDelay: `${(key === 'A' ? 0.1 : key === 'B' ? 0.2 : 0.3)}s`}}>
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
                             <div className="flex items-center mb-3">
@@ -416,7 +390,7 @@ export default function Generator() {
                         </div>
                         <div className="text-center">
                           <div className="text-gray-500">AI Model</div>
-                          <div className="font-semibold text-gray-900">Gemini 1.5</div>
+                          <div className="font-semibold text-gray-900">ChatGPT-5</div>
                         </div>
                         <div className="text-center">
                           <div className="text-gray-500">Generated</div>

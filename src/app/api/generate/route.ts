@@ -225,15 +225,7 @@ export async function POST(req: NextRequest) {
 
 
 
-    // Track telemetry (anonymized)
-    console.log('Generation completed', {
-      tone: body.tone,
-      starsBucket: body.stars ? (body.stars <= 2 ? 'low' : body.stars >= 4 ? 'high' : 'medium') : 'unknown',
-      length: body.length,
-      provider: 'gemini-1.5-flash',
-      sentiment: sentiment.label,
-      processingTime
-    });
+
 
     const responseData: GenerateResponse = {
       options,
