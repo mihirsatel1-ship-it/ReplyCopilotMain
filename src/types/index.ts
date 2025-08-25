@@ -7,6 +7,7 @@ export interface GenerateRequest {
   length: 'short' | 'medium' | 'long'
   platform?: 'google' | 'yelp' | 'facebook' | 'tripadvisor' | 'other'
   businessType?: string
+  aiModel?: 'chatgpt-5' | 'gemini-2.5' | 'grok-ai' | 'claude-3'
 }
 
 export interface GenerateResponse {

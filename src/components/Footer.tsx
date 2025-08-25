@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Logo from './Logo'
 
 export default function Footer() {
   return (
@@ -7,16 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-6 h-6 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded flex items-center justify-center">
-                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 4L20 12L12 20L4 12L12 4Z" opacity="0.9"/>
-                  <path d="M12 6L18 12L12 18L6 12L12 6Z" opacity="0.7"/>
-                </svg>
-              </div>
+              <Logo size="sm" />
               <span className="text-lg font-bold text-gray-900">ReplyPilot</span>
             </div>
             <p className="text-gray-600 text-sm">
-              Generate professional, on-brand replies to customer reviews in seconds.
+              Generate professional, on-brand replies to customer reviews in seconds. FREE AI-powered tool for small businesses.
             </p>
           </div>
           
@@ -31,6 +27,11 @@ export default function Footer() {
               <li>
                 <Link href="/generator" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
                   Generator
+                </Link>
+              </li>
+              <li>
+                <Link href="/resources" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                  Resources
                 </Link>
               </li>
               <li>
@@ -57,7 +58,7 @@ export default function Footer() {
               © 2025 ReplyPilot. All rights reserved.
             </p>
             <p className="text-sm text-gray-600 mt-2 md:mt-0">
-              Powered by ChatGPT-5
+              Powered by ChatGPT-5, Gemini, Grok AI
             </p>
           </div>
         </div>

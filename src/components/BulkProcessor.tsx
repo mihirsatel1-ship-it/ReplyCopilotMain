@@ -79,7 +79,8 @@ export default function BulkProcessor({ defaultSettings }: BulkProcessorProps) {
           brandVoice: defaultSettings.brandVoice || '',
           length: defaultSettings.length || 'medium',
           platform: defaultSettings.platform || 'other',
-          businessType: defaultSettings.businessType || ''
+          businessType: defaultSettings.businessType || '',
+          aiModel: defaultSettings.aiModel || 'chatgpt-5'
         }
 
         const response = await fetch('/api/generate', {

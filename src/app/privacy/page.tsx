@@ -1,3 +1,10 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - ReplyPilot',
+  description: 'Learn about how ReplyPilot protects your privacy and handles your data. We don\'t store your reviews - all processing is transient and anonymous.',
+}
+
 export default function Privacy() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-emerald-50">
